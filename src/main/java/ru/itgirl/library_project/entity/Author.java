@@ -24,6 +24,6 @@ public class Author {
     @Column(nullable = false)
     private String surname;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
     private Set<Book> books;
 }
