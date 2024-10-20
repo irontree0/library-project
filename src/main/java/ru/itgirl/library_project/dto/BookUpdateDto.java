@@ -4,13 +4,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class BookDto {
+public class BookUpdateDto {
     private Long id;
     private String name;
-    private String genre;
-    private String authors;
+    private Long genreId;
+    private Set<Long> authorIds;
 }
