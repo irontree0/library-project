@@ -1,0 +1,48 @@
+body {
+    font-family: "lato", sans-serif, ;
+    font-style: italic;
+}
+
+.container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h3 {
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+h3 small {
+    font-size: 0.5em;
+}
+
+.responsive-table li {
+    border-radius-left: 5px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+}
+.responsive-table .table-header {
+    background-color: #C1E1A1;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+.responsive-table .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+.responsive-table .col-1 {
+    flex-basis: 10%;
+}
+.responsive-table .col-2 {
+    flex-basis: 40%;
+}
+.responsive-table .col-3 {
+    flex-basis: 25%;
+}
