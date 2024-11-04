@@ -9,5 +9,8 @@
     <include file="changelog/2024_11_01.xml" relativeToChangelogFile="true"/>
     <include file="changelog/2024_11_03.xml" relativeToChangelogFile="true"/>
     <include file="changelog/2024_11_03_2.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/2024_11_03_3.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/2024_11_03_4.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/2024_11_03_5.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

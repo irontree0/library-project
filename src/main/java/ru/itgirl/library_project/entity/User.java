@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @Getter
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
