@@ -12,7 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Long>, JpaSpecificat
     Optional<Book> findBookByName(String name);
 
     @Query("select b from Book b where b.genre = ?1")
-    List<Book> findByBookIdGenre(Genre genre);
+    List<Book> findBooksByGenre(Genre genre);
 
     @Query(nativeQuery = true, value = "SELECT * FROM BOOK WHERE name = ?")
     Optional<Book> findBookByNameBySql(String name);

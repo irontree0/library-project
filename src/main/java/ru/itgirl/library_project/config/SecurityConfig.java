@@ -27,10 +27,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/book").hasRole("USER")
+        httpSecurity
+                .csrf().disable()
+                .authorizeHttpRequests((authorize) ->
+                        authorize.requestMatchers("/book").hasRole("GUEST")
                                 .requestMatchers("/book/v2").hasRole("ADMIN")
-                                .requestMatchers("/books").hasRole("USER")
+                                .requestMatchers("/books").hasRole("GUEST")
                                 .requestMatchers("/users").hasRole("ADMIN")
                                 .requestMatchers("/user/1").hasRole("GUEST")
                                 .requestMatchers("/user/2").hasRole("ADMIN")
@@ -40,40 +42,40 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
-//    @Bean
-//    public UserDetailsService users(DataSource dataSource) {
-//        User.UserBuilder users = User.withDefaultPasswordEncoder();
-//        UserDetails user = users
-//                .username("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//        UserDetails admin = users
-//                .username("admin")
-//                .password("password")
-//                .roles("USER", "ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
-
     @Bean
-    UserDetailsService users(DataSource dataSource) {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                ru.itgirl.library_project.entity.User user = repository.findUserByName(username).orElseThrow();
-                return User.withDefaultPasswordEncoder()
-                        .username(user.getName())
-                        .password(user.getPassword())
-                        .authorities(user.getRole().name())
-                        .roles(user.getRole().name())
-                        .accountExpired(false)
-                        .accountLocked(false)
-                        .credentialsExpired(false)
-                        .disabled(false)
-                        .build();
-            }
-        };
+    public UserDetailsService users(DataSource dataSource) {
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        UserDetails user = users
+                .username("user")
+                .password("password")
+                .roles("GUEST")
+                .build();
+        UserDetails admin = users
+                .username("admin")
+                .password("password")
+                .roles("GUEST", "ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
     }
+
+//    @Bean
+//    UserDetailsService users(DataSource dataSource) {
+//        return new UserDetailsService() {
+//            @Override
+//            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//                ru.itgirl.library_project.entity.User user = repository.findUserByName(username).orElseThrow();
+//                return User.withDefaultPasswordEncoder()
+//                        .username(user.getName())
+//                        .password(user.getPassword())
+//                        .authorities(user.getRole().name())
+//                        .roles(user.getRole().name())
+//                        .accountExpired(false)
+//                        .accountLocked(false)
+//                        .credentialsExpired(false)
+//                        .disabled(false)
+//                        .build();
+//            }
+//        };
+//    }
 }

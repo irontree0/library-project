@@ -1,5 +1,6 @@
 package ru.itgirl.library_project.controller.rest;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.itgirl.library_project.dto.UserDto;
@@ -27,12 +28,12 @@ public class UserRestController {
 //    }
 
     @PostMapping("/user/create")
-    UserDto createUser(@RequestBody UserDto userCreateDto) {
+    UserDto createUser(@RequestBody @Valid UserDto userCreateDto) {
         return userService.createUser(userCreateDto);
     }
 
     @PostMapping("/user/update")
-    UserDto updateUser(@RequestBody UserDto userUpdateDto) {
+    UserDto updateUser(@RequestBody @Valid UserDto userUpdateDto) {
         return userService.updateUser(userUpdateDto);
     }
 

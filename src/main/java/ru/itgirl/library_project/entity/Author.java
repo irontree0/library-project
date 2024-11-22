@@ -9,6 +9,7 @@ import java.util.Set;
 @Builder
 @Getter
 @Entity
+@ToString
 public class Author {
 
     @Id
