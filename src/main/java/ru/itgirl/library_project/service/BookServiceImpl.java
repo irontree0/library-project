@@ -99,7 +99,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto createBook(BookCreateDto bookCreateDto) {
-        log.info("Create new user {}", bookCreateDto.getName());
+        log.info("Create new book {}", bookCreateDto.getName());
         Book book = bookRepository.save(convertDtoToEntity(bookCreateDto));
         log.debug("Book {} is created", book);
         return convertEntityToDto(book);
